@@ -13,6 +13,7 @@ public class CybertekAppp {
         //2nd Way;
         ApplicationContext container = new ClassPathXmlApplicationContext("config.xml");
 
+
         //Mentor mentor = new FullTimeMentor();
         //Mentor mentor = (Mentor)container.getBean("partTimeMentor");
 
