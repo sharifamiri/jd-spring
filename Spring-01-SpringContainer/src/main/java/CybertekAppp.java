@@ -18,7 +18,6 @@ public class CybertekAppp {
         //Mentor mentor = (Mentor)container.getBean("partTimeMentor");
 
         Mentor mentor = container.getBean("fullTimeMentor",Mentor.class);
-
         mentor.createAccount();
     }
 }
