@@ -37,6 +37,7 @@ public class HomeController {
         return "home";
     }
 
+//    http://localhost:8080/home/Sharif/sharif@emil.com
     @GetMapping("/home/{name}/{email}")
     public String pathVariableEx2(@PathVariable("name") String name,@PathVariable("email") String email){
         System.out.println("home name is: " + name);
