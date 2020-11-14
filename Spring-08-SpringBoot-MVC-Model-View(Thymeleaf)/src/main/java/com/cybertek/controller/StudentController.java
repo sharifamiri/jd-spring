@@ -25,7 +25,8 @@ public class StudentController {
         String subject = "Collections";
         model.addAttribute("subject",subject);
 
-//        String id = UUID.randomUUID().toString();
+        // create some random studenid (0-1000) and show it in your UI
+        // String id = UUID.randomUUID().toString();
         int studentId = new Random().nextInt(1000);
         model.addAttribute("id",studentId);
 
@@ -36,7 +37,7 @@ public class StudentController {
         model.addAttribute("numbers",numbers);
 
         //print your birthday
-        LocalDate birthday = LocalDate.of(1988, Month.MAY,3);
+        LocalDate birthday = LocalDate.of(1823, Month.MAY,3);
         model.addAttribute("birthday",birthday);
 
         return "student/welcome";
