@@ -31,7 +31,7 @@ public class EmployeeController {
         model.addAttribute("employeeList", Arrays.asList(employee));
 
         int birthYear = LocalDate.parse(employee.getBirthday()).getYear();
-        model.addAttribute("age",LocalDate.now().getYear()-birthYear);
+        model.addAttribute("age",LocalDate.now().getYear()-birthYear).toString();
 
         return "employee/employee-list";
     }

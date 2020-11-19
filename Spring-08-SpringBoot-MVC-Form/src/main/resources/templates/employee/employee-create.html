@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 <div class="container d-flex justify-content-center">
     <div class="card">
         <h2 class="card-header p-5 bg-info">Welcome to Employee Registration Page</h2>
@@ -36,7 +35,10 @@
                     </div>
                     <div class="form-group col">
                         <label for="inputDate">Birthday</label>
-                        <input type="date" class="form-control" id="inputDate" th:field="*{birthday}" placeholder="Date">
+                        <input type="date" class="form-control" id="inputDate" th:field="*{birthday}" placeholder="Date" required>
+                        <div class="invalid-feedback">
+                            Please enter birthday!
+                        </div>
                     </div>
                 </div>
 
@@ -77,22 +79,15 @@
                             Please enter city!
                         </div>
                     </div>
-                    <!--
+
                     <div class="form-group col-md-4">
                         <label for="inputState">State</label>
                         <select id="inputState" th:field="*{state}" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="admin" selected>Choose...</option>
                             <option th:each="theState : ${stateList}" th:value="${theState}" th:text="${theState}">...</option>
                         </select>
                     </div>
-                    -->
-                    <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <select id="inputState" th:field="*{state}" class="form-control">
-                            <option value="admin" selected>Select</option>
-                            <option th:each="theState : ${stateList}" th:value="${theState}" th:text="${theState}">...</option>
-                        </select>
-                    </div>
+
                     <div class="form-group col-md-2">
                         <label for="inputZip">Zip</label>
                         <input type="text" class="form-control" id="inputZip" th:field="*{zipcode}" placeholder="Zip"
@@ -115,6 +110,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
