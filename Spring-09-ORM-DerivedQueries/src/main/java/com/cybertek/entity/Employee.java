@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Table(name = "employees")
+@ToString
 public class Employee extends BaseEntity {
 
     private String firstName;

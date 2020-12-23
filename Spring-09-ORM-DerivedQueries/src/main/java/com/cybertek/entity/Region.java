@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = "regions")
+@ToString
 public class Region extends BaseEntity {
 
     private String region;
