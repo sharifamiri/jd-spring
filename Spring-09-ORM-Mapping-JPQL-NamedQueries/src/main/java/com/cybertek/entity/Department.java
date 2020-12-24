@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -15,6 +13,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "departments")
 @ToString
+@NamedQuery(name = "Department.findSharifDepartment",
+            query = "select d from Department  d where d.division=?1")
+@NamedNativeQuery(name = "Department.countAllDepartments",
+            query = "select count(*) from departments",
+            resultClass = Department.class)
 public class Department {
 
     @Id
