@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = "account_details")
+@ToString
 public class Account extends BaseEntity {
 
     private String name;

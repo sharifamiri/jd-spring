@@ -3,9 +3,11 @@ package com.cybertek.repository;
 import com.cybertek.entity.Account;
 import com.cybertek.enums.UserRole;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public interface AccountRepository extends JpaRepository<Account,Long> {
 
     // ------------------- DERIVED QUERIES ------------------- //
@@ -25,7 +27,7 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
     List<Account> findAllByAddressStartingWith(String address);
 
 //Write a derived query to sort the list of accounts with age
-    List<Account> findByOderByAgeDesc();
+    List<Account> findByOrderByAgeDesc();
 
 // ------------------- JPQL QUERIES ------------------- //
 //Write a JPQL query that returns all accounts
@@ -33,7 +35,7 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
     List<Account> fetchAllJPQL();
 
 //Write a JPQL query to list all admin accounts
-    @Query("select a from Account a where a.role='Admin'")
+    @Query("select a from Account a where a.role='USER'")
     List<Account> fetchAdminUsers();
 
 //Write a JPQL query to sort all accounts with age
