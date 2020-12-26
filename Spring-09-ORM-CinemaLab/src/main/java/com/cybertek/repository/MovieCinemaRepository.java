@@ -35,7 +35,15 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema,Long> {
 //Write a JPQL query to list all movie cinemas with higher than a specific date
     @Query("select mc from MovieCinema mc where mc.dateTime > ?1")
     List<MovieCinema> fetchAllWithHigherSpecificDateJpql(LocalDateTime dateTime);
+
+
 // ------------------- Native QUERIES ------------------- //
 //Write a native query to count all movie cinemas by cinema id
+    @Query(value = "select count(*) from movie_cinema where cinema_id=?1",nativeQuery = true)
+    Integer countByCinemaIdNativeQuery(Long cinemaId);
+
 //Write a native query that returns all movie cinemas by location name
+    @Query(value = "select * from movie_cinema mc join cinema c on c.id=mc.cinema_id join location l on c.location_id=l.id where l.name=?1",nativeQuery = true)
+    List<MovieCinema> retrieveAllByLocationName(String locationName);
+
 }
