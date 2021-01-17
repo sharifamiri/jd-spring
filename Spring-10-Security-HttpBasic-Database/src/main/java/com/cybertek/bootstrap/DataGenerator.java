@@ -3,8 +3,6 @@ package com.cybertek.bootstrap;
 import com.cybertek.entity.User;
 import com.cybertek.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +33,5 @@ public class DataGenerator implements CommandLineRunner {
         List<User> users = Arrays.asList(employee,admin,manager);
 
         userRepository.saveAll(users);
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
     }
 }
