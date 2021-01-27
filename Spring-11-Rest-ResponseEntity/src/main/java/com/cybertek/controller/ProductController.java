@@ -49,8 +49,15 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public List<Product> deleteProduct(@PathVariable Long id){
-        return productService.delete(id);
+    public ResponseEntity<List<Product>> deleteProduct(@PathVariable Long id){
+        HttpHeaders responseHttpHeaders = new HttpHeaders();
+        responseHttpHeaders.set("Version","Cybertek.v1");
+        responseHttpHeaders.set("Operation","Delete");
+
+        List<Product> list = productService.delete(id);
+
+        return new ResponseEntity<>(list,responseHttpHeaders,HttpStatus.OK);
+
     }
 
     @PutMapping(value = "/{id}")
