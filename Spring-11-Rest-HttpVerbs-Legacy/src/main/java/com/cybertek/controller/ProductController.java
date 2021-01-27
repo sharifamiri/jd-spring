@@ -1,7 +1,7 @@
-package dom.cybertek.controller;
+package com.cybertek.controller;
 
-import dom.cybertek.entity.Product;
-import dom.cybertek.service.ProductService;
+import com.cybertek.entity.Product;
+import com.cybertek.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

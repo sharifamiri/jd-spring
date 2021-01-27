@@ -1,8 +1,8 @@
-package dom.cybertek.implementation;
+package com.cybertek.implementation;
 
-import dom.cybertek.entity.Product;
-import dom.cybertek.repository.ProductRepository;
-import dom.cybertek.service.ProductService;
+import com.cybertek.entity.Product;
+import com.cybertek.repository.ProductRepository;
+import com.cybertek.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

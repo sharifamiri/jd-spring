@@ -1,7 +1,7 @@
-package dom.cybertek.bootstrap;
+package com.cybertek.bootstrap;
 
-import dom.cybertek.entity.Product;
-import dom.cybertek.repository.ProductRepository;
+import com.cybertek.entity.Product;
+import com.cybertek.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
