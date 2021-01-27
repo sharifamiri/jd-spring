@@ -13,7 +13,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class Product {
 
     @Id
