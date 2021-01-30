@@ -35,7 +35,7 @@ public class Teacher  extends BaseEntity{
     private Status status;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "educational_level")
+    @Column(name = "education_level")
     protected EducationLevel educationLevel;
 
     @OneToOne(cascade = CascadeType.ALL)
