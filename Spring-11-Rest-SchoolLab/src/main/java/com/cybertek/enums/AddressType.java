@@ -2,5 +2,5 @@ package com.cybertek.enums;
 
 public enum AddressType {
 
-    STUDENT,TEACHER
+    STUDENT,TEACHER,PARENT
 }
