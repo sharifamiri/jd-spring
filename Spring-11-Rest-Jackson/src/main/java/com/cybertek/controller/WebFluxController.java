@@ -43,7 +43,7 @@ public class WebFluxController {
     }
 
     @PostMapping("/create-genre")
-    public Mono<Genre> createGenre(@RequestParam Genre genre){
+    public Mono<Genre> createGenre(@RequestBody Genre genre){
         Genre createdGenre = genreRepository.save(genre);
         return Mono.just(createdGenre);
 //        return Mono.just(genreRepository.saveAll(genre));
