@@ -310,3 +310,11 @@ from employees
 except
 select department
 from departments;
+
+--Find a name that is mentioned 3 times or more with the average grade
+--survey table with column name and grade
+SELECT name, CAST(AVG(grade) AS DECIMAL(3,2)) AS task_name
+FROM survey
+GROUP BY name
+HAVING COUNT(name) >= 3
+
