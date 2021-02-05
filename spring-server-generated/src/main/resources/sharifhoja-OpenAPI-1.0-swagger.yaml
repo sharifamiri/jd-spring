@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: 'Cybertek API Documentation'
+  description: 'OpenAPI Training'
+  contact:
+    url: https://cybertekschool.com
+    name: Cybertek
+servers: 
+  - url: https://dev.cybertek.com
+    description: Development Server
+  - url: https://qa.dev.cybertek.com
+    description: QA Server
+  - url: https://prod.cybertek.com
+    description: Production Server
+paths:
+  /v1/courses:
+    get:
+      summary: List Courses
+      description: Get a list of courses in the Cybertek
+      tags:
+        - Courses
+      parameters:
+        - name: courseId
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: List of Courses
+        '400':
+          description: No course found
+  /v1/students:
+    get:
+      summary: List Students
+      description: Get a list of students in the Cybertek
+      tags:
+        - Students
+      responses:
+        '200':
+          description: List of Students
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentList'
+        '400':
+          description: No student found
+    post:
+      summary: New Student
+      description: Create a new student
+      tags:
+        - Students
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+          description: Student created
+          headers:
+            Location:
+              description: Location of the created student
+              schema:
+                type: string
+                format: uri
+                example: http:/example.com/v1/students/{studentId}
+  /v1/students/{studentId}:
+    get:
+      summary: Get Student by ID
+      description: Get a **Single** student by its id
+      tags:
+        - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of Students
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentList'
+    put:
+      summary: Update Student
+      description: Update student by id
+      tags:
+        - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Student updated
+    delete:
+      summary: Delete Student
+      description: Delete student by id
+      tags:
+        - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Student updated
+        '400': 
+          description: Bad request
+        '404': 
+          description: Not found
+        '409':
+          description: Conflict
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 7925 Jones Branch Dr
+        city:
+          type: string
+          example: McLean
+        zipCode:
+          type: integer
+          example: 22102
+        state:
+          type: string
+          # enum: [VA,NY,CA]
+          enum: 
+            - VA
+            - NY
+            - CA
+      description: address object
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        firstName:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: Mike
+        lastName:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: Smith
+        address:
+          $ref: '#/components/schemas/Address'
+      description: student object
+    StudentList:
+      type: array
+      description: List of Students
+      items:
+        $ref: '#/components/schemas/Student'
