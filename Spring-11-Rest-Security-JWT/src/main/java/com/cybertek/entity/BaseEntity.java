@@ -25,30 +25,30 @@ public class BaseEntity {
     private Date createDate;
 
     @JsonIgnore
-    @Column(name = "updated_date",nullable = false,updatable = false)
+    @Column(name = "updated_date",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
     @JsonIgnore
-    @Column(name = "user_created",nullable = false)
+    @Column(name = "user_created",updatable = false)
     private Integer createUserId;
 
     @JsonIgnore
     @Column(name = "user_updated",nullable = false)
-    private Integer updatedUserId;
+    private Integer updateUserId;
 
     @PrePersist
     private void onPersist(){
         this.createDate = new Date();
         this.updateDate = new Date();
         this.createUserId = 1;
-        this.updatedUserId = 1;
+        this.updateUserId = 1;
     }
 
     @PreUpdate
     private void onPreUpdate(){
         this.updateDate = new Date();
-        this.updatedUserId = 1;
+        this.updateUserId = 1;
     }
 
 }
