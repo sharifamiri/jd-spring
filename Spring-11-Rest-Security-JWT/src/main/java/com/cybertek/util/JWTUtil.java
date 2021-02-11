@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -31,7 +32,7 @@ public class JWTUtil {
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 60 * 10)) //10 hours token validity
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //10 hours token validity
                 .signWith(SignatureAlgorithm.ES256,secret).compact();
     }
 
@@ -54,5 +55,14 @@ public class JWTUtil {
 
     public Date extractExpiration(String token){
         return extractClaim(token,Claims::getExpiration);
+    }
+
+    private Boolean isTokenExpired(String token){
+        return extractExpiration(token).before(new Date());
+    }
+
+    public  Boolean validateToken(String token, UserDetails userDetails){
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
