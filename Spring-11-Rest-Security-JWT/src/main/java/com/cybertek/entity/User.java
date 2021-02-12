@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Where(clause = "is_deleted=false")
+@Where(clause="is_deleted=false")
 public class User extends BaseEntity {
 
     @Column(nullable = false,unique = true)
