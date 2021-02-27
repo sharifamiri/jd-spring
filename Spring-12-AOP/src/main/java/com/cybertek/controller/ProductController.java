@@ -30,12 +30,7 @@ public class ProductController {
     @GetMapping
     public List<Product> getProducts(){
 
-        logger.info("Before -> Controller:{} - method:{} - Input Parameters:{}","ProductController","getProducts");
-
         List<Product> list = productService.getProducts();
-
-        logger.info("After -> Controller:{} - method:{} - Output Parameter:{}","ProductController","getProducts", list);
-
         return list;
     }
 
