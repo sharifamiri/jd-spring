@@ -44,4 +44,16 @@ public class LoggingAspect {
     public void beforeControllerAdvice(JoinPoint joinPoint){
         logger.info("Before -> Method {} - Arguments : {} - Target : {}", joinPoint,joinPoint.getArgs(),joinPoint.getTarget());
     }
+
+    //within
+    @Pointcut("within(com.cybertek.controller..*)")
+    public void anyControllerOperation(){}
+
+    @Pointcut("@within(org.springframework.stereotype.Service)")
+    public void anyServiceAnnotatedOperation(){}
+
+    @Before("anyServiceAnnotatedOperation() || anyControllerOperation()")
+    public void beforeControllerAdvice2(JoinPoint joinPoint){
+        logger.info("Before -> Method : {} - Arguments : {} - Target : {}",joinPoint,joinPoint.getArgs(),joinPoint.getTarget());
+    }
 }
