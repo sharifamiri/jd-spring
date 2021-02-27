@@ -29,7 +29,6 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getProducts(){
-
         List<Product> list = productService.getProducts();
         return list;
     }
@@ -64,6 +63,11 @@ public class ProductController {
 
         List<Product> list = productService.updateProduct(id, product);
         return new ResponseEntity<>(list,map,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
+        return ResponseEntity.ok(productService.getProduct(id));
     }
 
     @GetMapping("/read")
