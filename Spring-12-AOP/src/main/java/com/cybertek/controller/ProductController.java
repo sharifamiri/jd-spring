@@ -65,9 +65,14 @@ public class ProductController {
         return new ResponseEntity<>(list,map,HttpStatus.OK);
     }
 
+//    @GetMapping(value = "/{id}")
+//    public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
+//        return ResponseEntity.ok(productService.getProduct(id));
+//    }
+
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
-        return ResponseEntity.ok(productService.getProduct(id));
+    public Product getProduct(@PathVariable("id") Long id){
+        return productService.getProduct(id);
     }
 
     @GetMapping("/read")
