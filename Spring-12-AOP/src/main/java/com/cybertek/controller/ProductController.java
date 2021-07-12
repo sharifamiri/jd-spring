@@ -34,13 +34,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<List<Product>> createProduct(@RequestBody Product product){
+    public List<Product> createProduct(@RequestBody Product product){
         List<Product> set = productService.createProduct(product);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .header("Version","Cybertek.V1")
-                .header("Operation","Create")
-                .body(set);
+        return set;
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .header("Version","Cybertek.V1")
+//                .header("Operation","Create")
+//                .body(set);
     }
 
     @DeleteMapping(value = "/{id}")

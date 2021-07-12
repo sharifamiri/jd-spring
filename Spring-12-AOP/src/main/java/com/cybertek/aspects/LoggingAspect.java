@@ -106,11 +106,11 @@ public class LoggingAspect {
         logger.info("After finally -> Method : {} - results :{}",joinPoint.getSignature().toShortString());
     }
 
-    //arroung
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    //arround
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
     private void anyPostProductOperation(){}
 
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.PutMapping)")
     private void anyPuttProductOperation(){}
 
     @Around("anyPostProductOperation()")
@@ -118,6 +118,7 @@ public class LoggingAspect {
         logger.info("Before(Method : {} - Parameters : {}",proceedingJoinPoint.getSignature().toShortString(),proceedingJoinPoint.getArgs());
         List<Product> results = new ArrayList<>();
         results = (List<Product>) proceedingJoinPoint.proceed();
+
         logger.info("After(Method: {} - Results : {}", proceedingJoinPoint.getSignature().toShortString(),results);
         return results;
     }
