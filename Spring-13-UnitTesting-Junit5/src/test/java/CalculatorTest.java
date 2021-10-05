@@ -1,22 +1,72 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
-    @Test
-    void add() {
-        int actual = Calculator.add(2,3);
-        assertEquals(5,actual);
+    @BeforeEach
+    void setUpEach(){
+        System.out.println("BeforeEach executed");
+    }
+
+    @BeforeAll
+    static void setUpAll(){
+        System.out.println("BeforeAll executed");
+    }
+
+    @AfterAll
+    static void tearAll(){
+        System.out.println("AfterAll executed");
+    }
+
+    @AfterEach
+    void tearEach(){
+        System.out.println("AfterEach executed");
     }
 
     @Test
     void testCase1(){
+        System.out.println("TC1 executed");
         assertTrue(Calculator.operator.equals("add"));
     }
 
     @Test
     void testCase2(){
-        fail("Not implemented");
+        System.out.println("TC2 executed");
+//        fail("Not implemented");
+    }
+
+    @Test
+    void testCase3(){
+        System.out.println("TC2 executed");
+        assertArrayEquals(new int[]{1,2,3},new int[]{1,2,3});
+    }
+
+    @Test
+    void testCase4(){
+        System.out.println("TC4 executed");
+        String nullString = null;
+        String notNullString = "Cybertek";
+        assertNotNull(notNullString);
+//        assertNotNull(nullString);
+        assertNull(nullString);
+    }
+
+    @Test
+    void testCase5(){
+        Calculator c1 = new Calculator();
+        Calculator c2 = c1;
+        Calculator c3 = new Calculator();
+
+        //Comparing objects
+        assertNotSame(c1,c3);
+//        assertNotSame(c1,c2);
+        assertSame(c1,c2);
+    }
+
+    @Test
+    void add() {
+        int actual = Calculator.add(2,3);
+        assertEquals(5,actual);
     }
 }
