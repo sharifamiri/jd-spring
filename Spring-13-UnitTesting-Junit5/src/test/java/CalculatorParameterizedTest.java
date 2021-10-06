@@ -35,4 +35,14 @@ public class CalculatorParameterizedTest {
         String arr[] = {"Java","JS","TS"};
         return arr;
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "10,20,30",
+            "20,20,40",
+            "30,20,100"
+    })
+    void testCase5(int num1,int num2,int result){
+        Assertions.assertEquals(result,Calculator.add(num1,num2));
+    }
 }
